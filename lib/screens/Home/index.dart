@@ -45,8 +45,8 @@ class HomeScreenState extends State<HomeScreen>{
             title: new Text('Vols'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.mail),
-            title: Text('Messagerie')
+            icon: Icon(Icons.portrait),
+            title: Text('Profil')
           )
         ],
       ),
