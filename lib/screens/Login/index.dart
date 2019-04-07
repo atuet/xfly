@@ -37,7 +37,7 @@ class LoginScreenState extends State<LoginScreen> {
   }
 
   void _handleSubmitted() {
-      Navigator.pushNamed(context, "/HomePage");
+      Navigator.pushReplacementNamed(context, "/HomePage");
   }
 
   @override
@@ -48,9 +48,7 @@ class LoginScreenState extends State<LoginScreen> {
     Validations validations = new Validations();
     return new Scaffold(
         key: _scaffoldKey,
-        body: new SingleChildScrollView(
-            controller: scrollController,
-            child: new Container(
+        body: new Container(
               padding: new EdgeInsets.all(16.0),
               decoration: new BoxDecoration(image: backgroundImage),
               child: new GestureDetector(
@@ -60,7 +58,7 @@ class LoginScreenState extends State<LoginScreen> {
                 child: new Column(
                   children: <Widget>[
                     new Container(
-                      height: screenSize.height,
+                      height: screenSize.height - 50,
                       child: new Column(
                         crossAxisAlignment: CrossAxisAlignment.center,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -92,7 +90,7 @@ class LoginScreenState extends State<LoginScreen> {
                                     fontSize: 50.0,
                                     color: Color.fromRGBO(186, 36, 54, 1)
                                   ),
-                                  )
+                                )
                               ]
                             )
                           ),
@@ -169,6 +167,8 @@ class LoginScreenState extends State<LoginScreen> {
                     
                   ],
                 ),
-            ))));
+            )
+          )
+      );
   }
 }

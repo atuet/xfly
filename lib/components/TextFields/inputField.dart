@@ -52,9 +52,12 @@ class InputField extends StatelessWidget {
               border: InputBorder.none,
               hintText: hintText,
               hintStyle: hintStyle,
-              icon: new Icon(
-                icon,
-                color: iconColor,
+              icon: new Padding(
+                padding: EdgeInsets.all(12.0),
+                child: Icon(
+                  icon,
+                  color: iconColor,
+                ),
               ),
             ),
           ),

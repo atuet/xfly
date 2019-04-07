@@ -16,7 +16,7 @@ class HomeScreenState extends State<HomeScreen>{
   final List<Widget> _children = [
     AccueilWidget(),
     VolsWidget(),
-    MessagerieWidget()
+    ProfilWidget()
   ];
   void onTabTapped(int index) {
    setState(() {

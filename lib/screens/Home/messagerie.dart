@@ -15,7 +15,7 @@ String scheduledate = formatDate(new DateTime.now(), [yyyy, '-', mm, '-', dd]);
 
 
 
-class MessagerieWidget extends StatefulWidget {
+class ProfilWidget extends StatefulWidget {
  @override
  State<StatefulWidget> createState() => VolsScreenState();
 //  Widget build(BuildContext context) {
@@ -25,7 +25,7 @@ class MessagerieWidget extends StatefulWidget {
 //  }
 }
 
-class VolsScreenState extends State<MessagerieWidget> {
+class VolsScreenState extends State<ProfilWidget> {
 
 
   final scrollController = new ScrollController();
