@@ -4,7 +4,6 @@ import 'package:xfly/screens/Home/index.dart';
 import 'package:xfly/theme/style.dart';
 
 class Routes {
-
   var routes = <String, WidgetBuilder>{
     "/HomePage": (BuildContext context) => new HomeScreen()
   };
@@ -12,7 +11,7 @@ class Routes {
   Routes() {
     runApp(new MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: "Flutter Flat App",
+      title: "X-FLY",
       home: new LoginScreen(),
       theme: appTheme,
       routes: routes,

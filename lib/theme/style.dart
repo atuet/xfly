@@ -6,7 +6,7 @@ TextStyle textStyle = const TextStyle(
     fontWeight: FontWeight.normal);
 
 TextStyle hintStyle = const TextStyle(
-    color: const Color.fromRGBO(59, 59, 61, 0.5),
+  color: const Color.fromRGBO(59, 59, 61, 0.5),
 );
 
 ThemeData appTheme = new ThemeData(

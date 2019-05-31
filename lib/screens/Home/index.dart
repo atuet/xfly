@@ -4,14 +4,13 @@ import "messagerie.dart";
 import "vols.dart";
 
 class HomeScreen extends StatefulWidget {
-const HomeScreen({ Key key }) : super(key: key);
+  const HomeScreen({Key key}) : super(key: key);
 
-@override
-HomeScreenState createState() => new HomeScreenState();
+  @override
+  HomeScreenState createState() => new HomeScreenState();
 }
 
-
-class HomeScreenState extends State<HomeScreen>{
+class HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0; // this will be set when a new tab is tapped
   final List<Widget> _children = [
     AccueilWidget(),
@@ -19,18 +18,19 @@ class HomeScreenState extends State<HomeScreen>{
     ProfilWidget()
   ];
   void onTabTapped(int index) {
-   setState(() {
-     _currentIndex = index;
-   });
- }
+    setState(() {
+      _currentIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
     return new Scaffold(
       appBar: AppBar(
-          title: Text('X-FLY'),
-          backgroundColor: Color.fromRGBO(186, 36, 54, 1),
-        ),
+        title: Text('X-FLY'),
+        backgroundColor: Color.fromRGBO(186, 36, 54, 1),
+      ),
       body: _children[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
         onTap: onTabTapped,
@@ -45,9 +45,7 @@ class HomeScreenState extends State<HomeScreen>{
             title: new Text('Vols'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.portrait),
-            title: Text('Profil')
-          )
+              icon: Icon(Icons.portrait), title: Text('Profil'))
         ],
       ),
     );

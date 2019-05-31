@@ -2,7 +2,7 @@
 // {
 //     final List<String> codeshares;
 //     Codeshares({this.codeshares});
-    
+
 // }
 
 // class PublicFlightState
@@ -120,7 +120,6 @@
 //   final Object expectedTimeBoarding;
 //   final Object expectedTimeGateClosing;
 //   final String schemaVersion;
-  
 
 //   Flight({this.id, this.flightName, this.scheduleDate, this.flightDirection, this.flightNumber, this.prefixIATA, this.prefixICAO, this.scheduleTime, this.serviceType, this.mainFlight, this.codeshares, this.estimatedLandingTime, this.actualLandingTime, this.finalEstimatedOffBlockTime, this.actualOffBlockTime, this.finalFlightState, this.route, this.terminal, this.gate, this.baggageClaim, this.expectedTimeOnBelt, this.checkinAllocations, this.transferPositions, this.aircraftType, this.aircraftRegistration, this.airlineCode, this.expectedTimeGateOpen, this.expectedTimeBoarding, this.expectedTimeGateClosing, this.schemaVersion});
 

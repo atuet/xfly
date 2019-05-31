@@ -37,7 +37,7 @@ class LoginScreenState extends State<LoginScreen> {
   }
 
   void _handleSubmitted() {
-      Navigator.pushReplacementNamed(context, "/HomePage");
+    Navigator.pushReplacementNamed(context, "/HomePage");
   }
 
   @override
@@ -49,126 +49,118 @@ class LoginScreenState extends State<LoginScreen> {
     return new Scaffold(
         key: _scaffoldKey,
         body: new Container(
-              padding: new EdgeInsets.all(16.0),
-              decoration: new BoxDecoration(image: backgroundImage),
-              child: new GestureDetector(
-                onTap: () {
-                  FocusScope.of(context).requestFocus(new FocusNode());
-                },
-                child: new Column(
-                  children: <Widget>[
-                    new Container(
-                      height: screenSize.height - 50,
-                      child: new Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          new Center(
-                              child: new Image(
-                            image: logo,
-                            width: (screenSize.width < 500)
-                                ? 280.0
-                                : (screenSize.width / 4) + 12.0,
-                            height: screenSize.height / 4 + 20,
-                          )),
-                          new Container(
-                            margin: const EdgeInsets.only(bottom: 70.0, top: 10.0),
+            padding: new EdgeInsets.all(16.0),
+            decoration: new BoxDecoration(image: backgroundImage),
+            child: new GestureDetector(
+              onTap: () {
+                FocusScope.of(context).requestFocus(new FocusNode());
+              },
+              child: new Column(
+                children: <Widget>[
+                  new Container(
+                    height: screenSize.height - 50,
+                    child: new Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        new Center(
+                            child: new Image(
+                          image: logo,
+                          width: (screenSize.width < 500)
+                              ? 280.0
+                              : (screenSize.width / 4) + 12.0,
+                          height: screenSize.height / 4 + 20,
+                        )),
+                        new Container(
+                            margin:
+                                const EdgeInsets.only(bottom: 70.0, top: 10.0),
                             alignment: new Alignment(0.0, -1.0),
                             child: new Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                new Text(
-                                  'X-',
-                                  style: new TextStyle(
-                                    fontSize: 70.0,
-                                    color: Color.fromRGBO(59, 59, 61, 1)
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: <Widget>[
+                                  new Text(
+                                    'X-',
+                                    style: new TextStyle(
+                                        fontSize: 70.0,
+                                        color: Color.fromRGBO(59, 59, 61, 1)),
                                   ),
-                                  ),
-                                new Text(
-                                  'FLY',
-                                  style: new TextStyle(
-                                    fontSize: 50.0,
-                                    color: Color.fromRGBO(186, 36, 54, 1)
-                                  ),
-                                )
-                              ]
-                            )
-                          ),
-                          new Container(
-                            child: new Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                new Form(
-                                  key: formKey,
-                                  autovalidate: autovalidate,
-                                  child: new Column(
-                                    children: <Widget>[
-                                      new InputField(
-                                          hintText: "Identifiant",
-                                          hintStyle: hintStyle,
-                                          obscureText: false,
-                                          textInputType: TextInputType.text,
-                                          textStyle: textStyle,
-                                          textInputAction2: TextInputAction.next,
-                                          textFieldColor: textFieldColor,
-                                          icon: Icons.vpn_key,
-                                          iconColor: Colors.grey,
-                                          bottomMargin: 20.0,
-                                          onSaved: (String email) {
-                                          }),
-                                      new InputField(
-                                          hintText: "Mot De Passe",
-                                          hintStyle: hintStyle,
-                                          obscureText: true,
-                                          textInputAction2: TextInputAction.done,
-                                          textInputType: TextInputType.text,
-                                          textStyle: textStyle,
-                                          textFieldColor: textFieldColor,
-                                          icon: Icons.lock_open,
-                                          iconColor: Colors.grey,
-                                          bottomMargin: 30.0,
-                                          validateFunction:
-                                              validations.validatePassword,
-                                          onSaved: (String password) {
-                                          }),
-                                
-                                      new RoundedButton(
-                                        buttonName: "Connexion",
-                                        onTap: _handleSubmitted,
-                                        width: screenSize.width,
-                                        height: 50.0,
-                                        bottomMargin: 10.0,
-                                        borderWidth: 0.0,
-                                        buttonColor: primaryColor,
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                new Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  new Text(
+                                    'FLY',
+                                    style: new TextStyle(
+                                        fontSize: 50.0,
+                                        color: Color.fromRGBO(186, 36, 54, 1)),
+                                  )
+                                ])),
+                        new Container(
+                          child: new Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              new Form(
+                                key: formKey,
+                                autovalidate: autovalidate,
+                                child: new Column(
                                   children: <Widget>[
-                                    new TextButton(
-                                        buttonName: "A propos",
-                                        onPressed: _onPressed,
-                                        buttonTextStyle: buttonTextStyle),
-                                    new TextButton(
-                                        buttonName: "Besoin d'aide ?",
-                                        onPressed: _onPressed,
-                                        buttonTextStyle: buttonTextStyle)
+                                    new InputField(
+                                        hintText: "Identifiant",
+                                        hintStyle: hintStyle,
+                                        obscureText: false,
+                                        textInputType: TextInputType.text,
+                                        textStyle: textStyle,
+                                        textInputAction2: TextInputAction.next,
+                                        textFieldColor: textFieldColor,
+                                        icon: Icons.vpn_key,
+                                        iconColor: Colors.grey,
+                                        bottomMargin: 20.0,
+                                        onSaved: (String email) {}),
+                                    new InputField(
+                                        hintText: "Mot De Passe",
+                                        hintStyle: hintStyle,
+                                        obscureText: true,
+                                        textInputAction2: TextInputAction.done,
+                                        textInputType: TextInputType.text,
+                                        textStyle: textStyle,
+                                        textFieldColor: textFieldColor,
+                                        icon: Icons.lock_open,
+                                        iconColor: Colors.grey,
+                                        bottomMargin: 30.0,
+                                        validateFunction:
+                                            validations.validatePassword,
+                                        onSaved: (String password) {}),
+                                    new RoundedButton(
+                                      buttonName: "Connexion",
+                                      onTap: _handleSubmitted,
+                                      width: screenSize.width,
+                                      height: 50.0,
+                                      bottomMargin: 10.0,
+                                      borderWidth: 0.0,
+                                      buttonColor: primaryColor,
+                                    ),
                                   ],
-                                )
-                              ],
-                            ),
+                                ),
+                              ),
+                              new Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: <Widget>[
+                                  new TextButton(
+                                      buttonName: "A propos",
+                                      onPressed: _onPressed,
+                                      buttonTextStyle: buttonTextStyle),
+                                  new TextButton(
+                                      buttonName: "Besoin d'aide ?",
+                                      onPressed: _onPressed,
+                                      buttonTextStyle: buttonTextStyle)
+                                ],
+                              )
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                    
-                  ],
-                ),
-            )
-          )
-      );
+                  ),
+                ],
+              ),
+            )));
   }
 }
