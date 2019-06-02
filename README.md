@@ -1,8 +1,9 @@
 # xfly
 
-A new Flutter project.
+POUR TELECHARGER LA VERSION APK :
 
-## Getting Started
+http://alexandretuet.com/app-release.apk.zip
 
-For help getting started with Flutter, view our online
-[documentation](https://flutter.io/).
+POUR TELECHARGER LA VERSION IOS :
+
+http://alexandretuet.com/Runner.zip
