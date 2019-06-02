@@ -7,12 +7,17 @@ import 'package:xfly/Model/model3.dart';
 import 'package:http/http.dart' as http;
 import 'package:date_format/date_format.dart';
 
+// app_id et app_key servent pour les appels a l'api
 String app_id = "91aad82e";
 String app_key = "5fddf1b66d46cfa6ba42f1b906c57cee";
-// String scheduledate = '2018-10-30';
+
+// on prends la date du jour et on la formate au format voulu
 String scheduledate = formatDate(new DateTime.now(), [yyyy, '-', mm, '-', dd]);
 
+// Fonction qui permet d'appeler l'api pour récupérer
+// la liste des vols du jour
 Future<List<Flight>> fetchFlights() async {
+  // Requuête HTTP
   final response = await http.get(
       'https://api.schiphol.nl/public-flights/flights?scheduledate=$scheduledate&includedelays=false&page=0&sort=%2BscheduleTime&flightDirection=D',
       headers: {
@@ -21,23 +26,14 @@ Future<List<Flight>> fetchFlights() async {
         "app_key": app_key,
         "ResourceVersion": "v4"
       });
-  if (response.statusCode == 200) {
-    List flights = json.decode(response.body)['flights'];
-    return flights.map((flights) => new Flight.fromJson(flights)).toList();
-  } else {
-    throw Exception('Erreur dans le chargement de la liste');
-  }
-}
 
-Future<List<Flight>> fetchFlights2(page) async {
-  final response = await http.get(
-      // &flightdirection=D
-      'https://api.schiphol.nl/public-flights/flights?app_id=$app_id&app_key=$app_key&scheduledate=$scheduledate&includedelays=false&page=$page&sort=%2Bscheduletime',
-      headers: {"ResourceVersion": "v3"});
+  // Si la réponse est reçue avec succès
   if (response.statusCode == 200) {
+    // On décode la réponse renvoyée et on la transforme en liste de vols
     List flights = json.decode(response.body)['flights'];
     return flights.map((flights) => new Flight.fromJson(flights)).toList();
   } else {
+    // Sinon on renvoie une erreur
     throw Exception('Erreur dans le chargement de la liste');
   }
 }
@@ -45,11 +41,6 @@ Future<List<Flight>> fetchFlights2(page) async {
 class VolsWidget extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => VolsScreenState();
-//  Widget build(BuildContext context) {
-//    return Container(
-//      child: new Text('Vols'),
-//    );
-//  }
 }
 
 class VolsScreenState extends State<VolsWidget> {
@@ -61,6 +52,9 @@ class VolsScreenState extends State<VolsWidget> {
   String now = formatDate(new DateTime.now(), [dd, '/', mm, '/', yyyy]);
 
   @override
+  // Fonction qui va être executée au lancement de la page
+  // ça va permettre de faire la requete a l'api pour récupérer
+  // les vols et les afficher par la suite
   void initState() {
     super.initState();
     refreshListFlight();
@@ -76,6 +70,7 @@ class VolsScreenState extends State<VolsWidget> {
   @override
   Widget build(BuildContext context) {
     return new Center(
+      // On affiche un loader tant que les informations ne sont pas chargées
       child: RefreshIndicator(
           key: refreshKey,
           child: FutureBuilder<List<Flight>>(
@@ -92,6 +87,9 @@ class VolsScreenState extends State<VolsWidget> {
                               onTap: () {
                                 // Plus tard
                               },
+
+                              // Pour chaque vol de la liste list_flights on
+                              // effectue ceci :
                               child: Card(
                                 elevation: 1.0,
                                 color: Colors.white,
@@ -102,7 +100,6 @@ class VolsScreenState extends State<VolsWidget> {
                                   children: <Widget>[
                                     Expanded(
                                         child: Container(
-                                      // margin: const EdgeInsets.symmetric(horizontal: 2.0),
                                       width: 100.0,
                                       height: 120.0,
                                       child: Column(
@@ -114,6 +111,9 @@ class VolsScreenState extends State<VolsWidget> {
                                           Container(
                                             margin: const EdgeInsets.only(
                                                 left: 15.0),
+
+                                            // On affiche la date en haut a Gauche (now est définie plus haut et
+                                            // correspond a la date du jour)
                                             child: Text(
                                               now,
                                               style: TextStyle(
@@ -123,6 +123,8 @@ class VolsScreenState extends State<VolsWidget> {
                                               textAlign: TextAlign.left,
                                             ),
                                           ),
+
+                                          // En dessous, on affiche l'heure de départ de l'avion
                                           Container(
                                               margin: const EdgeInsets.only(
                                                   left: 15.0,
@@ -137,11 +139,13 @@ class VolsScreenState extends State<VolsWidget> {
                                                         186, 36, 54, 1)),
                                                 textAlign: TextAlign.left,
                                               )),
+
+                                          // En dessous on affiche l'aeroport de provenance
                                           Container(
                                               margin: const EdgeInsets.only(
                                                   left: 15.0),
                                               child: Text(
-                                                '${(flights.route.destinations).toString().substring(1, 4)}',
+                                                'AMS',
                                                 style: TextStyle(
                                                     fontSize: 15.0,
                                                     color: Color.fromRGBO(
@@ -151,9 +155,12 @@ class VolsScreenState extends State<VolsWidget> {
                                         ],
                                       ),
                                     )),
+
+                                    // Sur la 2eme colone :
                                     Expanded(
                                         child: Column(
                                       children: <Widget>[
+                                        // On affiche premierement le nom du vol
                                         Container(
                                           margin: const EdgeInsets.only(
                                               top: 18.0, bottom: 10.0),
@@ -166,10 +173,14 @@ class VolsScreenState extends State<VolsWidget> {
                                                         FontWeight.bold)),
                                           ),
                                         ),
+
+                                        // On affiche l'image d'avion
                                         Image.asset(
                                           'assets/avion.png',
                                           width: 40.0,
                                         ),
+
+                                        // En dessous, on affiche l'estimation de l'heure de décollage
                                         Container(
                                             margin: const EdgeInsets.only(
                                                 top: 10.0),
@@ -184,9 +195,10 @@ class VolsScreenState extends State<VolsWidget> {
                                             )))
                                       ],
                                     )),
+
+                                    // Sur la 3e colonne on affiche :
                                     Expanded(
                                         child: Container(
-                                      // margin: const EdgeInsets.symmetric(horizontal: 2.0),
                                       width: 100.0,
                                       height: 120.0,
                                       child: Column(
@@ -195,6 +207,7 @@ class VolsScreenState extends State<VolsWidget> {
                                         mainAxisAlignment:
                                             MainAxisAlignment.center,
                                         children: <Widget>[
+                                          // La date du jour
                                           Align(
                                               alignment: Alignment.centerRight,
                                               child: Container(
@@ -208,6 +221,8 @@ class VolsScreenState extends State<VolsWidget> {
                                                             59, 59, 61, 1)),
                                                     textAlign: TextAlign.right,
                                                   ))),
+
+                                          // L'heure d'arrivée
                                           Align(
                                               alignment: Alignment.centerRight,
                                               child: Container(
@@ -225,6 +240,8 @@ class VolsScreenState extends State<VolsWidget> {
                                                             186, 36, 54, 1)),
                                                     textAlign: TextAlign.right,
                                                   ))),
+
+                                          // L'aéroport d'arrivée
                                           Align(
                                               alignment: Alignment.centerRight,
                                               child: Container(
@@ -254,6 +271,9 @@ class VolsScreenState extends State<VolsWidget> {
     );
   }
 
+  // Fonction appelée au debut de la page et qui permet de récupérer la
+  // liste des vols par la fonction fetchFlights et qui va attribuer la
+  // liste dans list_flights pour que ça puisse s'afficher
   Future<Null> refreshListFlight() async {
     refreshKey.currentState?.show(atTop: false);
     await new Future.delayed(const Duration(seconds: 1));
@@ -264,6 +284,10 @@ class VolsScreenState extends State<VolsWidget> {
     return null;
   }
 
+  // Fonction pour plus tard
+  String addTime(time) {}
+
+  // Fonction pour plus tard
   loadMore() async {
     if (!isLoading) {
       setState(() => isLoading = true);
@@ -276,6 +300,8 @@ class VolsScreenState extends State<VolsWidget> {
     }
   }
 
+  // Fonction qui permet d'afficher correctement l'estimation d'heure de décollage
+  // ou d'atterrisage
   String estimation(estimationAtterissage, actualAtterissage, actualDecolage) {
     if (actualAtterissage == null) {
       if (estimationAtterissage == null) {
@@ -293,8 +319,23 @@ class VolsScreenState extends State<VolsWidget> {
     }
   }
 
+  // Fonction qui permet d'afficher correctement l'heure de départ et d'arrivée
   String heure(heure) {
     return heure.toString().substring(0, 5);
+  }
+
+  // Fonction pour plus tard
+  Future<List<Flight>> fetchFlights2(page) async {
+    final response = await http.get(
+        // &flightdirection=D
+        'https://api.schiphol.nl/public-flights/flights?app_id=$app_id&app_key=$app_key&scheduledate=$scheduledate&includedelays=false&page=$page&sort=%2Bscheduletime',
+        headers: {"ResourceVersion": "v3"});
+    if (response.statusCode == 200) {
+      List flights = json.decode(response.body)['flights'];
+      return flights.map((flights) => new Flight.fromJson(flights)).toList();
+    } else {
+      throw Exception('Erreur dans le chargement de la liste');
+    }
   }
 
   // Future<Null> refreshListFlight2() async {

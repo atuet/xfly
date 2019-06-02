@@ -10,16 +10,7 @@ class AccueilWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            // Container(
-            //   margin: const EdgeInsets.only(bottom: 70.0, top: 20.0),
-            //   child: Center(
-            //     child: Text(
-            //       "ACCUEIL",
-            //       style: new TextStyle(
-            //           fontSize: 35.0, color: Color.fromRGBO(186, 36, 54, 1)),
-            //     ),
-            //   ),
-            // ),
+            // Carte affichant la section mes prochains vols
             Card(
               elevation: 1.0,
               color: Colors.white,
@@ -28,10 +19,11 @@ class AccueilWidget extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
+                  // On divise la carte en 2 pour afficher le texte a gauche
+                  // et l'icon a droite (un expanded chacun)
                   Expanded(
                       flex: 3,
                       child: Container(
-                        // margin: const EdgeInsets.symmetric(horizontal: 2.0),
                         width: 100.0,
                         height: 120.0,
                         child: Column(
@@ -67,6 +59,8 @@ class AccueilWidget extends StatelessWidget {
                 ],
               ),
             ),
+
+            // Carte qui sert aux informations aéroport
             Card(
               elevation: 1.0,
               color: Colors.white,
@@ -78,7 +72,6 @@ class AccueilWidget extends StatelessWidget {
                   Expanded(
                       flex: 3,
                       child: Container(
-                        // margin: const EdgeInsets.symmetric(horizontal: 2.0),
                         width: 100.0,
                         height: 120.0,
                         child: Column(
@@ -166,32 +159,13 @@ class AccueilWidget extends StatelessWidget {
   }
 }
 
-// class Drawhorizontalline extends CustomPainter {
-
-//   Paint _paint;
-//   bool reverse;
-
-//   Drawhorizontalline(this.reverse) {
-// _paint = Paint()
-// ..color = Colors.white
-// ..strokeWidth = 0.5
-// ..strokeCap = StrokeCap.round;
-// }
-
-//   @override
-//   void paint(Canvas canvas, Size size) {
-//     if(!reverse){
-// canvas.drawLine(Offset(10.0, 0.0), Offset(90.0, 0.0), _paint);
-// }
-//     else
-// {
-// canvas.drawLine(Offset(-90.0, 0.0), Offset(-10.0, 0.0), _paint);
-// }
-// }
-
-//   @override
-//   bool shouldRepaint(CustomPainter oldDelegate) {
-//     return false;
-// }
-
-// }
+// Container(
+//   margin: const EdgeInsets.only(bottom: 70.0, top: 20.0),
+//   child: Center(
+//     child: Text(
+//       "ACCUEIL",
+//       style: new TextStyle(
+//           fontSize: 35.0, color: Color.fromRGBO(186, 36, 54, 1)),
+//     ),
+//   ),
+// ),
