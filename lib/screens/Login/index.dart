@@ -15,6 +15,7 @@ class LoginScreen extends StatefulWidget {
 }
 
 class LoginScreenState extends State<LoginScreen> {
+  // Création de variables de contrôle pour gérer le format de la page
   BuildContext context;
   final TextEditingController _controller = new TextEditingController();
   final GlobalKey<FormState> formKey = new GlobalKey<FormState>();
@@ -27,6 +28,8 @@ class LoginScreenState extends State<LoginScreen> {
     print("button clicked");
   }
 
+  // Fonction permettant de changer de page vers celle qui est
+  // passée en parametre
   onPressed(String routeName) {
     Navigator.of(context).pushNamed(routeName);
   }
@@ -36,20 +39,25 @@ class LoginScreenState extends State<LoginScreen> {
         .showSnackBar(new SnackBar(content: new Text(value)));
   }
 
+  // Fonction appelée lorsque l'on appuie sur le bouton connexion
   void _handleSubmitted() {
+    // Charge la HomePage (Home/index.dart)
     Navigator.pushReplacementNamed(context, "/HomePage");
   }
 
+  // Partie majeure de la page
   @override
   Widget build(BuildContext context) {
     this.context = context;
     final Size screenSize = MediaQuery.of(context).size;
-    //print(context.widget.toString());
     Validations validations = new Validations();
+
     return new Scaffold(
         key: _scaffoldKey,
         body: new Container(
+            // Marges de tout les côtés de 16 pixels
             padding: new EdgeInsets.all(16.0),
+            // Image de backGround
             decoration: new BoxDecoration(image: backgroundImage),
             child: new GestureDetector(
               onTap: () {
@@ -63,6 +71,7 @@ class LoginScreenState extends State<LoginScreen> {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
+                        // Affiche le Logo de l'application
                         new Center(
                             child: new Image(
                           image: logo,
@@ -71,6 +80,8 @@ class LoginScreenState extends State<LoginScreen> {
                               : (screenSize.width / 4) + 12.0,
                           height: screenSize.height / 4 + 20,
                         )),
+
+                        // Affiche le Texte X-FLY au milieu de la page
                         new Container(
                             margin:
                                 const EdgeInsets.only(bottom: 70.0, top: 10.0),
@@ -91,16 +102,21 @@ class LoginScreenState extends State<LoginScreen> {
                                         color: Color.fromRGBO(186, 36, 54, 1)),
                                   )
                                 ])),
+
+                        // Contient les champs identifiant, mot de passe
+                        // et le bouton valider
                         new Container(
                           child: new Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
+                              // Création formulaire
                               new Form(
                                 key: formKey,
                                 autovalidate: autovalidate,
                                 child: new Column(
                                   children: <Widget>[
+                                    // Champ identifiant
                                     new InputField(
                                         hintText: "Identifiant",
                                         hintStyle: hintStyle,
@@ -113,6 +129,8 @@ class LoginScreenState extends State<LoginScreen> {
                                         iconColor: Colors.grey,
                                         bottomMargin: 20.0,
                                         onSaved: (String email) {}),
+
+                                    // Champ Mot de passe
                                     new InputField(
                                         hintText: "Mot De Passe",
                                         hintStyle: hintStyle,
@@ -127,6 +145,8 @@ class LoginScreenState extends State<LoginScreen> {
                                         validateFunction:
                                             validations.validatePassword,
                                         onSaved: (String password) {}),
+
+                                    // Bouton Connexion
                                     new RoundedButton(
                                       buttonName: "Connexion",
                                       onTap: _handleSubmitted,
@@ -139,6 +159,9 @@ class LoginScreenState extends State<LoginScreen> {
                                   ],
                                 ),
                               ),
+
+                              // Boutons A propos et Besoin d'aide
+                              // qui ne sont pas fonctionnels
                               new Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,

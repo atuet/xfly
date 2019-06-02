@@ -107,6 +107,8 @@ class AccueilWidget extends StatelessWidget {
                 ],
               ),
             ),
+
+            // Carte qui sert au bage dématérialisé
             Card(
               elevation: 1.0,
               color: Colors.white,
@@ -118,7 +120,6 @@ class AccueilWidget extends StatelessWidget {
                   Expanded(
                       flex: 3,
                       child: Container(
-                        // margin: const EdgeInsets.symmetric(horizontal: 2.0),
                         width: 100.0,
                         height: 120.0,
                         child: Column(
