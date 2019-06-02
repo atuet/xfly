@@ -22,7 +22,7 @@ class HomeScreenState extends State<HomeScreen> {
   final List<Widget> _children = [
     AccueilWidget(),
     VolsWidget(),
-    ProfilWidget()
+    ProfileScreen()
   ];
 
   // Lorsque l'on tappe sur une page en bas,

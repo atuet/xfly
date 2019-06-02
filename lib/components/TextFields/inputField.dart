@@ -12,9 +12,8 @@ class InputField extends StatelessWidget {
   var onSaved;
   Key key;
   TextInputAction textInputAction2;
+  TextEditingController controllerAction;
 
-  //passing props in the Constructor.
-  //Java like style
   InputField(
       {this.key,
       this.hintText,
@@ -28,7 +27,8 @@ class InputField extends StatelessWidget {
       this.textInputAction2,
       this.validateFunction,
       this.onSaved,
-      this.hintStyle});
+      this.hintStyle,
+      this.controllerAction});
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +40,7 @@ class InputField extends StatelessWidget {
               borderRadius: new BorderRadius.all(new Radius.circular(30.0)),
               color: textFieldColor),
           child: new TextFormField(
+            controller: controllerAction,
             style: textStyle,
             key: key,
             autocorrect: false,
@@ -52,12 +53,9 @@ class InputField extends StatelessWidget {
               border: InputBorder.none,
               hintText: hintText,
               hintStyle: hintStyle,
-              icon: new Padding(
-                padding: EdgeInsets.all(12.0),
-                child: Icon(
-                  icon,
-                  color: iconColor,
-                ),
+              icon: new Icon(
+                icon,
+                color: iconColor,
               ),
             ),
           ),

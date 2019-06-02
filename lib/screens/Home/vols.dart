@@ -231,7 +231,7 @@ class VolsScreenState extends State<VolsWidget> {
                                                       top: 5.0,
                                                       bottom: 5.0),
                                                   child: Text(
-                                                    '${(heure(flights.scheduleTime))}',
+                                                    '${(addTime(heure(flights.scheduleTime)))}',
                                                     style: TextStyle(
                                                         fontSize: 28.0,
                                                         fontWeight:
@@ -285,7 +285,42 @@ class VolsScreenState extends State<VolsWidget> {
   }
 
   // Fonction pour plus tard
-  String addTime(time) {}
+  String addTime(time) {
+    String heures = time.toString().substring(0, 2);
+    String minutes = time.toString().substring(3, 5);
+
+    var intHeures = int.tryParse(heures);
+    var intMinutes = int.tryParse(minutes);
+
+    intMinutes += 30;
+
+    if (intMinutes >= 60) {
+      intHeures++;
+      intMinutes -= 60;
+
+      if (intHeures >= 24) {
+        intHeures -= 24;
+      }
+    }
+
+    intHeures += 2;
+
+    if (intHeures >= 24) {
+      intHeures -= 24;
+    }
+
+    String heureFinale = '$intHeures';
+    String minutesFinale = '$intMinutes';
+
+    if (heureFinale.length == 1) {
+      heureFinale = "0" + heureFinale;
+    }
+    if (minutesFinale.length == 1) {
+      minutesFinale = "0" + minutesFinale;
+    }
+
+    return heureFinale + ":" + minutesFinale;
+  }
 
   // Fonction pour plus tard
   loadMore() async {

@@ -7,7 +7,8 @@ class Routes {
   // Déclaration de certaines routes avec des noms
   // Ici, route Homepage
   var routes = <String, WidgetBuilder>{
-    "/HomePage": (BuildContext context) => new HomeScreen()
+    "/HomePage": (BuildContext context) => new HomeScreen(),
+    "/Deconnexion": (BuildContext context) => new LoginScreen(),
   };
 
   // Constructeur de Route :

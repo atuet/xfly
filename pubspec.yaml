@@ -29,6 +29,8 @@ dev_dependencies:
   moment: ^0.0.1
   date_format: ^1.0.5
   http: ^0.12.0
+  shared_preferences: ^0.5.3
+  qr: ^1.1.1
 
 flutter_icons:
   image_path: "icon/icon.png"
@@ -51,6 +53,8 @@ flutter:
     - assets/login-screen-background.png
     - assets/signup-screen-background.png
     - assets/avion.png
+    - assets/pdp.png
+    - assets/airport.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.io/assets-and-images/.
