@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../accueil/prochains_vols.dart';
 import '../accueil/aeroports.dart';
 import '../accueil/badge.dart';
+import '../accueil/vide.dart';
 
 class AccueilWidget extends StatelessWidget {
   final scrollController = new ScrollController();
@@ -183,6 +184,62 @@ class AccueilWidget extends StatelessWidget {
                 ),
               ),
             ),
+
+            // Carte VIDE
+            // GestureDetector(
+            //   onTap: () {
+            //     Navigator.push(
+            //       context,
+            //       MaterialPageRoute(builder: (context) => Vide()),
+            //     );
+            //   },
+            //   child: Card(
+            //     elevation: 1.0,
+            //     color: Colors.white,
+            //     margin:
+            //         const EdgeInsets.symmetric(vertical: 8.0, horizontal: 14.0),
+            //     child: Row(
+            //       crossAxisAlignment: CrossAxisAlignment.start,
+            //       children: <Widget>[
+            //         Expanded(
+            //             flex: 3,
+            //             child: Container(
+            //               width: 100.0,
+            //               height: 120.0,
+            //               child: Column(
+            //                 crossAxisAlignment: CrossAxisAlignment.start,
+            //                 mainAxisAlignment: MainAxisAlignment.center,
+            //                 children: <Widget>[
+            //                   Container(
+            //                       margin: const EdgeInsets.only(
+            //                           left: 30.0, top: 5.0, bottom: 5.0),
+            //                       child: Text(
+            //                         'VIDE',
+            //                         style: TextStyle(
+            //                             fontSize: 20.0,
+            //                             fontWeight: FontWeight.bold,
+            //                             color: Color.fromRGBO(186, 36, 54, 1)),
+            //                         textAlign: TextAlign.left,
+            //                       )),
+            //                 ],
+            //               ),
+            //             )),
+            //         Expanded(
+            //             flex: 1,
+            //             child: Column(
+            //               crossAxisAlignment: CrossAxisAlignment.start,
+            //               mainAxisAlignment: MainAxisAlignment.center,
+            //               children: <Widget>[
+            //                 Container(
+            //                   margin: const EdgeInsets.only(top: 35.0),
+            //                   child: Icon(Icons.access_alarms, size: 50),
+            //                 )
+            //               ],
+            //             )),
+            //       ],
+            //     ),
+            //   ),
+            // ),
           ]),
     );
   }
