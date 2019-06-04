@@ -1,11 +1,8 @@
 import "package:flutter/material.dart";
 import 'package:xfly/components/qrcode.dart';
 import 'package:qr/qr.dart';
-
 import 'dart:async';
 import 'dart:convert';
-import 'dart:io';
-import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'package:flutter/cupertino.dart';
 import 'package:shared_preferences/shared_preferences.dart';

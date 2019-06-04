@@ -4,6 +4,7 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 import 'package:shared_preferences/shared_preferences.dart';
+import '../accueil/retard.dart';
 
 class ProchainsVols extends StatefulWidget {
   const ProchainsVols({Key key}) : super(key: key);
@@ -75,7 +76,10 @@ class ProchainsVolsState extends State<ProchainsVols> {
                         children: vol
                             .map((vol) => GestureDetector(
                                   onTap: () {
-                                    // Plus tard
+                                    Navigator.of(context).pushNamed("/Retard",
+                                        arguments: Retard(
+                                          idVol: vol.idVol,
+                                        ));
                                   },
 
                                   // Pour chaque vol de la liste list_flights on

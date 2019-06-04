@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:xfly/screens/Login/index.dart';
 import 'package:xfly/screens/Home/index.dart';
 import 'package:xfly/theme/style.dart';
+import './screens/accueil/retard.dart';
 
 class Routes {
   // Déclaration de certaines routes avec des noms
@@ -9,6 +10,7 @@ class Routes {
   var routes = <String, WidgetBuilder>{
     "/HomePage": (BuildContext context) => new HomeScreen(),
     "/Deconnexion": (BuildContext context) => new LoginScreen(),
+    "/Retard": (BuildContext context) => new Retard(),
   };
 
   // Constructeur de Route :
